@@ -23,6 +23,7 @@ namespace StudentDiary
             
             if (id != 0) 
             {
+                Text = "Edytuj dane studenta";
                 var students = DeserializeFromFile();
                 var student = students.FirstOrDefault(x => x.Id == id);
 

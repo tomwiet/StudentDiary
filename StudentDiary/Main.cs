@@ -20,6 +20,15 @@ namespace StudentDiary
             InitializeComponent();
             var students = DeserializeFromFile().OrderBy(x => x.Id).ToList();
             dgvDiary.DataSource = students;
+            dgvDiary.Columns[0].HeaderText = "Numer";
+            dgvDiary.Columns[1].HeaderText = "Imię";
+            dgvDiary.Columns[2].HeaderText = "Nazwisko";
+            dgvDiary.Columns[3].HeaderText = "Uwagi";
+            dgvDiary.Columns[4].HeaderText = "Matematyka";
+            dgvDiary.Columns[5].HeaderText = "Fizyka";
+            dgvDiary.Columns[6].HeaderText = "Technologia";
+            dgvDiary.Columns[7].HeaderText = "J. polski";
+            dgvDiary.Columns[8].HeaderText = "J. obcy";
         }
 
         
@@ -103,5 +112,7 @@ namespace StudentDiary
             var students = DeserializeFromFile().OrderBy(x => x.Id).ToList();
             dgvDiary.DataSource = students;
         }
+
+        
     }
 }
