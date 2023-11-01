@@ -40,6 +40,8 @@ namespace StudentDiary
                 rtbComments.Text = student.Comments;
                 
             }
+            
+            tbFirstName.Select();
         }
         public void SerializeToFile(List<Student> students)
         {
