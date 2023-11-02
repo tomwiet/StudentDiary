@@ -18,8 +18,19 @@ namespace StudentDiary
         public Main()
         {
             InitializeComponent();
+            RefreshDiary();
+            SetColumnsHeader();
+        }
+        public void RefreshDiary()
+        {
             var students = DeserializeFromFile().OrderBy(x => x.Id).ToList();
             dgvDiary.DataSource = students;
+
+        }
+        
+        public void SetColumnsHeader()
+        {
+            
             dgvDiary.Columns[0].HeaderText = "Numer";
             dgvDiary.Columns[1].HeaderText = "Imię";
             dgvDiary.Columns[2].HeaderText = "Nazwisko";
@@ -29,9 +40,8 @@ namespace StudentDiary
             dgvDiary.Columns[6].HeaderText = "Technologia";
             dgvDiary.Columns[7].HeaderText = "J. polski";
             dgvDiary.Columns[8].HeaderText = "J. obcy";
-        }
 
-        
+        }
 
         public void SerializeToFile(List<Student> students) 
         {
@@ -109,8 +119,7 @@ namespace StudentDiary
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            var students = DeserializeFromFile().OrderBy(x => x.Id).ToList();
-            dgvDiary.DataSource = students;
+            RefreshDiary();
         }
 
         
