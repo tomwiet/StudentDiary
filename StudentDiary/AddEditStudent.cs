@@ -16,6 +16,8 @@ namespace StudentDiary
     {
         private int _studentId;
 
+        private Student _student;
+
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
         public AddEditStudent(int id=0)
@@ -32,50 +34,48 @@ namespace StudentDiary
             {
                 Text = "Edytuj dane studenta";
                 var students = _fileHelper.DeserializeFromFile();
-                var student = students.FirstOrDefault(x => x.Id == _studentId);
+                _student = students.FirstOrDefault(x => x.Id == _studentId);
 
-                if (student == null)
+                if (_student == null)
                     throw new Exception("Brak użytkownika o podanym Id");
-
-                tbId.Text = student.Id.ToString();
-                tbFirstName.Text = student.FirstName;
-                tbLastName.Text = student.LastName;
-                tbMath.Text = student.Math;
-                tbPhysics.Text = student.Physics;
-                tbTechnology.Text = student.Technology;
-                tbPolishLang.Text = student.PolishLang;
-                tbForeginLang.Text = student.ForeginLang;
-                rtbComments.Text = student.Comments;
                 
+                FillTextBoxes();
+
+
+
             }
+
+        }
+
+        private void FillTextBoxes()
+        {
+            tbId.Text = _student.Id.ToString();
+            tbFirstName.Text = _student.FirstName;
+            tbLastName.Text = _student.LastName;
+            tbMath.Text = _student.Math;
+            tbPhysics.Text = _student.Physics;
+            tbTechnology.Text = _student.Technology;
+            tbPolishLang.Text = _student.PolishLang;
+            tbForeginLang.Text = _student.ForeginLang;
+            rtbComments.Text = _student.Comments;
 
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             var students = _fileHelper.DeserializeFromFile();
+            
             if (_studentId != 0)
-            {
                 students.RemoveAll(x => x.Id == _studentId);
-            }
             else
-            {
-                var studentWithHighestId = students
-                    .OrderByDescending(x => x.Id).FirstOrDefault();
-                /*    
-                 var studentId = 0;
+                AssignIdToNewStudent(students);
 
-                 if(studentWithHighestId == null)
-                 {
-                    studentId = 1;
-                 }
-                 else
-                 {
-                    studentId = studentWithHighestId.Id + 1;
-                 }
-                */
-                _studentId = studentWithHighestId == null ? 1 : studentWithHighestId.Id + 1;
-            }
+            AddNewUserToList(students);
+            _fileHelper.SerializeToFile(students);
+            Close();
 
+        }
+        private void AddNewUserToList(List<Student> students)
+        {
             var student = new Student()
             {
                 Id = _studentId,
@@ -88,10 +88,16 @@ namespace StudentDiary
                 ForeginLang = tbForeginLang.Text,
                 Technology = tbTechnology.Text
             };
-            
+
             students.Add(student);
-            _fileHelper.SerializeToFile(students);
-            Close();
+
+        }
+        private void AssignIdToNewStudent(List<Student> students)
+        {
+            var studentWithHighestId = students
+                    .OrderByDescending(x => x.Id).FirstOrDefault();
+         
+            _studentId = studentWithHighestId == null ? 1 : studentWithHighestId.Id + 1;
 
         }
 
