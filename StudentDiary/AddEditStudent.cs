@@ -14,8 +14,10 @@ namespace StudentDiary
 {
     public partial class AddEditStudent : Form
     {
-        private string _filePath = Path.Combine(Environment.CurrentDirectory, "students.txt");
         private int _studentId;
+
+        private FileHelper<List<Student>> _fileHelper =
+            new FileHelper<List<Student>>(Program.FilePath);
         public AddEditStudent(int id=0)
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace StudentDiary
             if (id != 0) 
             {
                 Text = "Edytuj dane studenta";
-                var students = DeserializeFromFile();
+                var students = _fileHelper.DeserializeFromFile();
                 var student = students.FirstOrDefault(x => x.Id == id);
 
                 if (student == null)
@@ -44,37 +46,10 @@ namespace StudentDiary
             
             tbFirstName.Select();
         }
-        public void SerializeToFile(List<Student> students)
-        {
-            var serializer = new XmlSerializer(typeof(List<Student>));
-
-            using (var streamWriter = new StreamWriter(_filePath))
-            {
-                serializer.Serialize(streamWriter, students);
-
-                streamWriter.Close();
-
-            }
-        }
-
-        public List<Student> DeserializeFromFile()
-        {
-            if (!File.Exists(_filePath))
-            {
-                return new List<Student>();
-            }
-            var serializer = new XmlSerializer(typeof(List<Student>));
-
-            using (var streamReader = new StreamReader(_filePath))
-            {
-                var students = (List<Student>)serializer.Deserialize(streamReader);
-                streamReader.Close();
-                return students;
-            }
-        }
+        
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            var students = DeserializeFromFile();
+            var students = _fileHelper.DeserializeFromFile();
             if (_studentId != 0)
             {
                 students.RemoveAll(x => x.Id == _studentId);
@@ -112,7 +87,7 @@ namespace StudentDiary
             };
             
             students.Add(student);
-            SerializeToFile(students);
+            _fileHelper.SerializeToFile(students);
             Close();
 
         }
