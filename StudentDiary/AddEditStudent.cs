@@ -21,13 +21,18 @@ namespace StudentDiary
         public AddEditStudent(int id=0)
         {
             InitializeComponent();
+           
             _studentId = id;
-            
-            if (id != 0) 
+            GetStudentData();
+            tbFirstName.Select();
+        }
+        private void GetStudentData()
+        {
+            if (_studentId != 0) 
             {
                 Text = "Edytuj dane studenta";
                 var students = _fileHelper.DeserializeFromFile();
-                var student = students.FirstOrDefault(x => x.Id == id);
+                var student = students.FirstOrDefault(x => x.Id == _studentId);
 
                 if (student == null)
                     throw new Exception("Brak użytkownika o podanym Id");
@@ -43,10 +48,8 @@ namespace StudentDiary
                 rtbComments.Text = student.Comments;
                 
             }
-            
-            tbFirstName.Select();
+
         }
-        
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             var students = _fileHelper.DeserializeFromFile();
