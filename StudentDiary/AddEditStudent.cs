@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -71,9 +72,21 @@ namespace StudentDiary
 
             AddNewUserToList(students);
             _fileHelper.SerializeToFile(students);
+            //await LongProcessAsync();
             Close();
 
         }
+
+       /* private async Task LongProcessAsync()
+
+        {
+            await Task.Run(() =>
+            {
+                Thread.Sleep(3000);
+
+            });
+ 
+        }*/
         private void AddNewUserToList(List<Student> students)
         {
             var student = new Student()
