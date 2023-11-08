@@ -48,6 +48,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.cbxStudentGroup = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lbId
@@ -181,7 +182,7 @@
             // 
             // rtbComments
             // 
-            this.rtbComments.Location = new System.Drawing.Point(111, 232);
+            this.rtbComments.Location = new System.Drawing.Point(111, 261);
             this.rtbComments.Name = "rtbComments";
             this.rtbComments.Size = new System.Drawing.Size(223, 96);
             this.rtbComments.TabIndex = 16;
@@ -198,7 +199,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(168, 353);
+            this.btnCancel.Location = new System.Drawing.Point(168, 363);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 32);
             this.btnCancel.TabIndex = 18;
@@ -208,7 +209,7 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(254, 353);
+            this.btnConfirm.Location = new System.Drawing.Point(254, 363);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(80, 32);
             this.btnConfirm.TabIndex = 19;
@@ -216,11 +217,20 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // cbxStudentGroup
+            // 
+            this.cbxStudentGroup.FormattingEnabled = true;
+            this.cbxStudentGroup.Location = new System.Drawing.Point(111, 231);
+            this.cbxStudentGroup.Name = "cbxStudentGroup";
+            this.cbxStudentGroup.Size = new System.Drawing.Size(223, 24);
+            this.cbxStudentGroup.TabIndex = 20;
+            // 
             // AddEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(380, 414);
+            this.Controls.Add(this.cbxStudentGroup);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label9);
@@ -273,5 +283,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.ComboBox cbxStudentGroup;
     }
 }

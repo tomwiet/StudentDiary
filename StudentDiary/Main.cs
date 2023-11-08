@@ -23,8 +23,14 @@ namespace StudentDiary
             InitializeComponent();
             RefreshDiary();
             SetColumnsHeader();
-            
-            
+            setStudentsGroupsList();
+
+
+
+        }
+        public void setStudentsGroupsList()
+        {
+            cbxIdOfStudentGroup.Items.AddRange(Student.listOfGroups);
         }
         public void RefreshDiary()
         {
@@ -39,12 +45,14 @@ namespace StudentDiary
             dgvDiary.Columns[0].HeaderText = "Numer";
             dgvDiary.Columns[1].HeaderText = "Imię";
             dgvDiary.Columns[2].HeaderText = "Nazwisko";
-            dgvDiary.Columns[3].HeaderText = "Uwagi";
-            dgvDiary.Columns[4].HeaderText = "Matematyka";
-            dgvDiary.Columns[5].HeaderText = "Fizyka";
-            dgvDiary.Columns[6].HeaderText = "Technologia";
-            dgvDiary.Columns[7].HeaderText = "J. polski";
-            dgvDiary.Columns[8].HeaderText = "J. obcy";
+            dgvDiary.Columns[3].HeaderText = "Klasa";
+            dgvDiary.Columns[4].HeaderText = "Uwagi";
+            dgvDiary.Columns[5].HeaderText = "Matematyka";
+            dgvDiary.Columns[6].HeaderText = "Fizyka";
+            dgvDiary.Columns[7].HeaderText = "Technologia";
+            dgvDiary.Columns[8].HeaderText = "J. polski";
+            dgvDiary.Columns[9].HeaderText = "J. obcy";
+            
 
         }
 

@@ -28,6 +28,7 @@ namespace StudentDiary
             _studentId = id;
             GetStudentData();
             tbFirstName.Select();
+            cbxStudentGroup.Items.AddRange(Student.listOfGroups);
         }
         private void GetStudentData()
         {
@@ -40,7 +41,7 @@ namespace StudentDiary
                 if (_student == null)
                     throw new Exception("Brak użytkownika o podanym Id");
                 
-                FillTextBoxes();
+                FillTextBoxes(_student.IdOfStudentGroup);
 
 
 
@@ -48,7 +49,7 @@ namespace StudentDiary
 
         }
 
-        private void FillTextBoxes()
+        private void FillTextBoxes(string idOfStudentGoup)
         {
             tbId.Text = _student.Id.ToString();
             tbFirstName.Text = _student.FirstName;
@@ -59,6 +60,10 @@ namespace StudentDiary
             tbPolishLang.Text = _student.PolishLang;
             tbForeginLang.Text = _student.ForeginLang;
             rtbComments.Text = _student.Comments;
+            cbxStudentGroup.Items.AddRange(Student.listOfGroups);
+            cbxStudentGroup.SelectedIndex = 
+                Array.IndexOf(Student.listOfGroups, _student.IdOfStudentGroup);
+
 
         }
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -94,12 +99,14 @@ namespace StudentDiary
                 Id = _studentId,
                 FirstName = tbFirstName.Text,
                 LastName = tbLastName.Text,
+                IdOfStudentGroup = cbxStudentGroup.SelectedItem.ToString(),
                 Comments = rtbComments.Text,
                 Math = tbMath.Text,
                 Physics = tbPhysics.Text,
                 PolishLang = tbPolishLang.Text,
                 ForeginLang = tbForeginLang.Text,
                 Technology = tbTechnology.Text
+                
             };
 
             students.Add(student);
