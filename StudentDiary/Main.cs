@@ -19,9 +19,12 @@ namespace StudentDiary
             new FileHelper<List<Student>>(Program.FilePath);
         public Main()
         {
+
             InitializeComponent();
             RefreshDiary();
             SetColumnsHeader();
+            
+            
         }
         public void RefreshDiary()
         {

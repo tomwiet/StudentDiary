@@ -33,6 +33,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvDiary = new System.Windows.Forms.DataGridView();
+            this.cbxIdOfStudentGroup = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +86,7 @@
             this.dgvDiary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvDiary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDiary.BackgroundColor = System.Drawing.Color.White;
             this.dgvDiary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiary.Location = new System.Drawing.Point(12, 52);
@@ -96,6 +98,14 @@
             this.dgvDiary.Size = new System.Drawing.Size(1130, 386);
             this.dgvDiary.TabIndex = 4;
             // 
+            // cbxIdOfStudentGroup
+            // 
+            this.cbxIdOfStudentGroup.FormattingEnabled = true;
+            this.cbxIdOfStudentGroup.Location = new System.Drawing.Point(337, 18);
+            this.cbxIdOfStudentGroup.Name = "cbxIdOfStudentGroup";
+            this.cbxIdOfStudentGroup.Size = new System.Drawing.Size(121, 24);
+            this.cbxIdOfStudentGroup.TabIndex = 5;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -103,6 +113,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1154, 450);
+            this.Controls.Add(this.cbxIdOfStudentGroup);
             this.Controls.Add(this.dgvDiary);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDelete);
@@ -122,6 +133,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridView dgvDiary;
+        private System.Windows.Forms.ComboBox cbxIdOfStudentGroup;
     }
 }
 

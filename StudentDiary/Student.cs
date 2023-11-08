@@ -17,6 +17,15 @@ namespace StudentDiary
         public string Technology {  get; set; }
         public string PolishLang {  get; set; }
         public string ForeginLang {  get; set; }
+        public string IdOfStudentGroup {  get; set; }
+
+        string[] listOfGroups =
+                {
+                "Mechanika",
+                "Budownictwo",
+                "Chemia"
+                };
+        
 
     }
 }
