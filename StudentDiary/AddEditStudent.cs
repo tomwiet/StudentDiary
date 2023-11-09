@@ -26,8 +26,10 @@ namespace StudentDiary
             InitializeComponent();
            
             _studentId = id;
+            cbxStudentGroup.Items.AddRange(School.studentsGroup.ToArray());
             GetStudentData();
             tbFirstName.Select();
+            
         }
         private void GetStudentData()
         {
@@ -59,7 +61,6 @@ namespace StudentDiary
             tbPolishLang.Text = _student.PolishLang;
             tbForeginLang.Text = _student.ForeginLang;
             rtbComments.Text = _student.Comments;
-            cbxStudentGroup.Items.AddRange(School.studentsGroup.ToArray());
             cbxStudentGroup.SelectedIndex =
                 School.studentsGroup.IndexOf(studentGroupName);
                
