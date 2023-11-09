@@ -11,14 +11,14 @@ namespace StudentDiary
         public int Id {  get; set; }    
         public string FirstName {  get; set; } 
         public string LastName { get; set; }
-        public string StudentGroup { get; set; }
+        public string studentGroupName { get; set; }
         public string Comments { get; set; }
         public string Math {  get; set; }
         public string Physics {  get; set; }
         public string Technology {  get; set; }
         public string PolishLang {  get; set; }
         public string ForeginLang {  get; set; }
-        public string studentGroupName {  get; set; }
+        
 
     }
 }
