@@ -30,7 +30,7 @@ namespace StudentDiary
         }
         public void setStudentsGroupsList()
         {
-            cbxIdOfStudentGroup.Items.AddRange(Student.listOfGroups);
+            cbxIdOfStudentGroup.Items.AddRange(School.studentsGroup.ToArray());
         }
         public void RefreshDiary()
         {
