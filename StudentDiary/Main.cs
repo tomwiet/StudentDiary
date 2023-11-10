@@ -25,14 +25,15 @@ namespace StudentDiary
             RefreshDiary();
             SetColumnsHeader();
             SetColumnsOrder();
-            
+            dgvDiary.Columns["OptionalClasses"].ReadOnly = true;
+
 
         }
         public void setStudentsGroupsList()
         {
-            cbxIdOfStudentGroup.Items.Add("Wszyscy");
-            cbxIdOfStudentGroup.Items.AddRange(School.studentsSections.ToArray());
-            cbxIdOfStudentGroup.SelectedIndex = 0;
+            cbxIdOfStudentClass.Items.Add("Wszyscy");
+            cbxIdOfStudentClass.Items.AddRange(School.studentsSections.ToArray());
+            cbxIdOfStudentClass.SelectedIndex = 0;
         }
         public void RefreshDiary()
         {
@@ -43,10 +44,10 @@ namespace StudentDiary
         var students = _fileHelper.DeserializeFromFile().OrderBy(x => x.Id).ToList();
             
             
-            if (!cbxIdOfStudentGroup.SelectedItem.Equals("Wszyscy"))
+            if (!cbxIdOfStudentClass.SelectedItem.Equals("Wszyscy"))
             {
                 students.RemoveAll(
-                    x => x.StudentSection != cbxIdOfStudentGroup.SelectedItem.ToString());
+                    x => x.StudentSection != cbxIdOfStudentClass.SelectedItem.ToString());
             }
             
             dgvDiary.DataSource = students;
@@ -82,6 +83,7 @@ namespace StudentDiary
             dgvDiary.Columns["PolishLang"].DisplayIndex = 8;
             dgvDiary.Columns["ForeginLang"].DisplayIndex = 9;
             dgvDiary.Columns["OptionalClasses"].DisplayIndex = 10;
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -144,6 +146,9 @@ namespace StudentDiary
             RefreshDiary();
         }
 
-
+        private void cbxIdOfStudentGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshDiary();
+        }
     }
 }
