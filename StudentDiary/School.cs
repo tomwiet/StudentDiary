@@ -8,7 +8,7 @@ namespace StudentDiary
 {
     public static class School
     {
-        public static List<string> studentsGroup = new List<string>
+        public static List<string> studentsSections = new List<string>
         {
             "Mechanika",
             "Budownictwo",

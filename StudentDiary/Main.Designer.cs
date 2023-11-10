@@ -34,6 +34,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvDiary = new System.Windows.Forms.DataGridView();
             this.cbxIdOfStudentGroup = new System.Windows.Forms.ComboBox();
+            this.lblSection = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,10 +102,19 @@
             // cbxIdOfStudentGroup
             // 
             this.cbxIdOfStudentGroup.FormattingEnabled = true;
-            this.cbxIdOfStudentGroup.Location = new System.Drawing.Point(337, 18);
+            this.cbxIdOfStudentGroup.Location = new System.Drawing.Point(447, 18);
             this.cbxIdOfStudentGroup.Name = "cbxIdOfStudentGroup";
             this.cbxIdOfStudentGroup.Size = new System.Drawing.Size(121, 24);
             this.cbxIdOfStudentGroup.TabIndex = 5;
+            // 
+            // lblSection
+            // 
+            this.lblSection.AutoSize = true;
+            this.lblSection.Location = new System.Drawing.Point(383, 21);
+            this.lblSection.Name = "lblSection";
+            this.lblSection.Size = new System.Drawing.Size(58, 16);
+            this.lblSection.TabIndex = 6;
+            this.lblSection.Text = "Wydział";
             // 
             // Main
             // 
@@ -113,6 +123,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1154, 450);
+            this.Controls.Add(this.lblSection);
             this.Controls.Add(this.cbxIdOfStudentGroup);
             this.Controls.Add(this.dgvDiary);
             this.Controls.Add(this.btnRefresh);
@@ -123,6 +134,7 @@
             this.Text = "Dziennik studenta";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -134,6 +146,7 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridView dgvDiary;
         private System.Windows.Forms.ComboBox cbxIdOfStudentGroup;
+        private System.Windows.Forms.Label lblSection;
     }
 }
 

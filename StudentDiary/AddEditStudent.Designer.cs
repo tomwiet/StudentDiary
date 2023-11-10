@@ -49,6 +49,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.cbxStudentGroup = new System.Windows.Forms.ComboBox();
+            this.lblSection = new System.Windows.Forms.Label();
+            this.cbOptionalClasses = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lbId
@@ -182,7 +184,7 @@
             // 
             // rtbComments
             // 
-            this.rtbComments.Location = new System.Drawing.Point(111, 261);
+            this.rtbComments.Location = new System.Drawing.Point(111, 308);
             this.rtbComments.Name = "rtbComments";
             this.rtbComments.Size = new System.Drawing.Size(223, 96);
             this.rtbComments.TabIndex = 16;
@@ -191,7 +193,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 269);
+            this.label9.Location = new System.Drawing.Point(13, 325);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 16);
             this.label9.TabIndex = 17;
@@ -199,7 +201,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(168, 363);
+            this.btnCancel.Location = new System.Drawing.Point(165, 410);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(80, 32);
             this.btnCancel.TabIndex = 18;
@@ -209,7 +211,7 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(254, 363);
+            this.btnConfirm.Location = new System.Drawing.Point(251, 410);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(80, 32);
             this.btnConfirm.TabIndex = 19;
@@ -225,11 +227,32 @@
             this.cbxStudentGroup.Size = new System.Drawing.Size(223, 24);
             this.cbxStudentGroup.TabIndex = 20;
             // 
+            // lblSection
+            // 
+            this.lblSection.AutoSize = true;
+            this.lblSection.Location = new System.Drawing.Point(13, 234);
+            this.lblSection.Name = "lblSection";
+            this.lblSection.Size = new System.Drawing.Size(58, 16);
+            this.lblSection.TabIndex = 21;
+            this.lblSection.Text = "Wydział";
+            // 
+            // cbOptionalClasses
+            // 
+            this.cbOptionalClasses.AutoSize = true;
+            this.cbOptionalClasses.Location = new System.Drawing.Point(111, 273);
+            this.cbOptionalClasses.Name = "cbOptionalClasses";
+            this.cbOptionalClasses.Size = new System.Drawing.Size(144, 20);
+            this.cbOptionalClasses.TabIndex = 23;
+            this.cbOptionalClasses.Text = "Zajęcia dodatkowe";
+            this.cbOptionalClasses.UseVisualStyleBackColor = true;
+            // 
             // AddEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 414);
+            this.ClientSize = new System.Drawing.Size(380, 537);
+            this.Controls.Add(this.cbOptionalClasses);
+            this.Controls.Add(this.lblSection);
             this.Controls.Add(this.cbxStudentGroup);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnCancel);
@@ -251,7 +274,6 @@
             this.Controls.Add(this.lnName);
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.lbId);
-            this.MaximumSize = new System.Drawing.Size(398, 461);
             this.MinimumSize = new System.Drawing.Size(398, 461);
             this.Name = "AddEditStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -284,5 +306,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.ComboBox cbxStudentGroup;
+        private System.Windows.Forms.Label lblSection;
+        private System.Windows.Forms.CheckBox cbOptionalClasses;
     }
 }

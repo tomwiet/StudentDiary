@@ -26,12 +26,10 @@ namespace StudentDiary
             SetColumnsOrder();
             setStudentsGroupsList();
 
-
-
         }
         public void setStudentsGroupsList()
         {
-            cbxIdOfStudentGroup.Items.AddRange(School.studentsGroup.ToArray());
+            cbxIdOfStudentGroup.Items.AddRange(School.studentsSections.ToArray());
         }
         public void RefreshDiary()
         {
@@ -46,13 +44,14 @@ namespace StudentDiary
             dgvDiary.Columns["id"].HeaderText = "Numer";
             dgvDiary.Columns["FirstName"].HeaderText = "Imię";
             dgvDiary.Columns["LastName"].HeaderText = "Nazwisko";
-            dgvDiary.Columns["studentGroupName"].HeaderText = "Klasa";
+            dgvDiary.Columns["StudentSection"].HeaderText = "Wydział";
             dgvDiary.Columns["Comments"].HeaderText = "Uwagi";
             dgvDiary.Columns["Math"].HeaderText = "Matematyka";
             dgvDiary.Columns["Physics"].HeaderText = "Fizyka";
             dgvDiary.Columns["Technology"].HeaderText = "Technologia";
             dgvDiary.Columns["PolishLang"].HeaderText = "J. polski";
             dgvDiary.Columns["ForeginLang"].HeaderText = "J. obcy";
+            dgvDiary.Columns["OptionalClasses"].HeaderText = "Zaj dod.";
 
         }
         public void SetColumnsOrder()
@@ -60,13 +59,14 @@ namespace StudentDiary
             dgvDiary.Columns["id"].DisplayIndex = 0;
             dgvDiary.Columns["FirstName"].DisplayIndex = 2;
             dgvDiary.Columns["LastName"].DisplayIndex = 3;
-            dgvDiary.Columns["studentGroupName"].DisplayIndex = 1;
+            dgvDiary.Columns["StudentSection"].DisplayIndex = 1;
             dgvDiary.Columns["Comments"].DisplayIndex = 4;
             dgvDiary.Columns["Math"].DisplayIndex = 5;
             dgvDiary.Columns["Physics"].DisplayIndex = 6;
             dgvDiary.Columns["Technology"].DisplayIndex = 7;
             dgvDiary.Columns["PolishLang"].DisplayIndex = 8;
             dgvDiary.Columns["ForeginLang"].DisplayIndex = 9;
+            dgvDiary.Columns["OptionalClasses"].DisplayIndex = 10;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
