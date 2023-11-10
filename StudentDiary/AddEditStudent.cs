@@ -21,19 +21,19 @@ namespace StudentDiary
 
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
-        public AddEditStudent(int id=0)
+        public AddEditStudent(int id = 0)
         {
             InitializeComponent();
-           
+
             _studentId = id;
             cbxStudentGroup.Items.AddRange(School.studentsSections.ToArray());
             GetStudentData();
             tbFirstName.Select();
-            
+
         }
         private void GetStudentData()
         {
-            if (_studentId != 0) 
+            if (_studentId != 0)
             {
                 Text = "Edytuj dane studenta";
                 var students = _fileHelper.DeserializeFromFile();
@@ -41,7 +41,7 @@ namespace StudentDiary
 
                 if (_student == null)
                     throw new Exception("Brak użytkownika o podanym Id");
-                
+
                 FillEditingControls(_student.StudentSection);
 
 
@@ -63,19 +63,18 @@ namespace StudentDiary
             rtbComments.Text = _student.Comments;
             cbxStudentGroup.SelectedIndex =
                 School.studentsSections.IndexOf(studentGroupName);
-            if (_student.OptionalClasses)
-                cbOptionalClasses.Checked = _student.OptionalClasses;
-            
+            cbOptionalClasses.Checked = _student.OptionalClasses;
 
-            
-               
+
+
+
 
 
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             var students = _fileHelper.DeserializeFromFile();
-            
+
             if (_studentId != 0)
                 students.RemoveAll(x => x.Id == _studentId);
             else
@@ -88,16 +87,16 @@ namespace StudentDiary
 
         }
 
-       /* private async Task LongProcessAsync()
+        /* private async Task LongProcessAsync()
 
-        {
-            await Task.Run(() =>
-            {
-                Thread.Sleep(3000);
+         {
+             await Task.Run(() =>
+             {
+                 Thread.Sleep(3000);
 
-            });
- 
-        }*/
+             });
+
+         }*/
         private void AddNewUserToList(List<Student> students)
         {
             var student = new Student()
@@ -112,7 +111,7 @@ namespace StudentDiary
                 PolishLang = tbPolishLang.Text,
                 ForeginLang = tbForeginLang.Text,
                 Technology = tbTechnology.Text,
-                OptionalClasses = cbOptionalClasses.Checked             
+                OptionalClasses = cbOptionalClasses.Checked
             };
 
             students.Add(student);
@@ -122,7 +121,7 @@ namespace StudentDiary
         {
             var studentWithHighestId = students
                     .OrderByDescending(x => x.Id).FirstOrDefault();
-         
+
             _studentId = studentWithHighestId == null ? 1 : studentWithHighestId.Id + 1;
 
         }
