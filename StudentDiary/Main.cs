@@ -37,19 +37,16 @@ namespace StudentDiary
         }
         public void RefreshDiary()
         {
-            
-                
-        
 
-        var students = _fileHelper.DeserializeFromFile().OrderBy(x => x.Id).ToList();
-            
-            
+            var students = _fileHelper.DeserializeFromFile().OrderBy(x => x.Id).ToList();
+
+
             if (!cbxIdOfStudentClass.SelectedItem.Equals("Wszyscy"))
             {
                 students.RemoveAll(
                     x => x.StudentSection != cbxIdOfStudentClass.SelectedItem.ToString());
             }
-            
+
             dgvDiary.DataSource = students;
 
         }
@@ -83,7 +80,7 @@ namespace StudentDiary
             dgvDiary.Columns["PolishLang"].DisplayIndex = 8;
             dgvDiary.Columns["ForeginLang"].DisplayIndex = 9;
             dgvDiary.Columns["OptionalClasses"].DisplayIndex = 10;
-            
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -122,8 +119,8 @@ namespace StudentDiary
             var selectedStudent = dgvDiary.SelectedRows[0];
 
             var confirmDelete = MessageBox.Show($"Czy na pewno chcesz usunąć studenta " +
-                ($"{selectedStudent.Cells[1].Value.ToString()}" +
-                $"{selectedStudent.Cells[2].Value.ToString()}").Trim(),
+                ($"{selectedStudent.Cells[1].Value}" +
+                $"{selectedStudent.Cells[2].Value}").Trim(),
                 "Usuwanie studenta",
                 MessageBoxButtons.OKCancel);
             if (confirmDelete == DialogResult.OK)
