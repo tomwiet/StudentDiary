@@ -21,19 +21,34 @@ namespace StudentDiary
         {
 
             InitializeComponent();
+            setStudentsGroupsList();
             RefreshDiary();
             SetColumnsHeader();
             SetColumnsOrder();
-            setStudentsGroupsList();
+            
 
         }
         public void setStudentsGroupsList()
         {
+            cbxIdOfStudentGroup.Items.Add("Wszyscy");
             cbxIdOfStudentGroup.Items.AddRange(School.studentsSections.ToArray());
+            cbxIdOfStudentGroup.SelectedIndex = 0;
         }
         public void RefreshDiary()
         {
-            var students = _fileHelper.DeserializeFromFile().OrderBy(x => x.Id).ToList();
+            
+                
+        
+
+        var students = _fileHelper.DeserializeFromFile().OrderBy(x => x.Id).ToList();
+            
+            
+            if (!cbxIdOfStudentGroup.SelectedItem.Equals("Wszyscy"))
+            {
+                students.RemoveAll(
+                    x => x.StudentSection != cbxIdOfStudentGroup.SelectedItem.ToString());
+            }
+            
             dgvDiary.DataSource = students;
 
         }
@@ -57,9 +72,9 @@ namespace StudentDiary
         public void SetColumnsOrder()
         {
             dgvDiary.Columns["id"].DisplayIndex = 0;
-            dgvDiary.Columns["FirstName"].DisplayIndex = 2;
-            dgvDiary.Columns["LastName"].DisplayIndex = 3;
-            dgvDiary.Columns["StudentSection"].DisplayIndex = 1;
+            dgvDiary.Columns["FirstName"].DisplayIndex = 1;
+            dgvDiary.Columns["LastName"].DisplayIndex = 2;
+            dgvDiary.Columns["StudentSection"].DisplayIndex = 3;
             dgvDiary.Columns["Comments"].DisplayIndex = 4;
             dgvDiary.Columns["Math"].DisplayIndex = 5;
             dgvDiary.Columns["Physics"].DisplayIndex = 6;
