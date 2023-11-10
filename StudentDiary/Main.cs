@@ -14,7 +14,7 @@ namespace StudentDiary
 {
     public partial class Main : Form
     {
-       
+
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
         public Main()
@@ -23,6 +23,7 @@ namespace StudentDiary
             InitializeComponent();
             RefreshDiary();
             SetColumnsHeader();
+            SetColumnsOrder();
             setStudentsGroupsList();
 
 
@@ -38,22 +39,34 @@ namespace StudentDiary
             dgvDiary.DataSource = students;
 
         }
-        
+
         public void SetColumnsHeader()
         {
-            
-            dgvDiary.Columns[0].HeaderText = "Numer";
-            dgvDiary.Columns[1].HeaderText = "Imię";
-            dgvDiary.Columns[2].HeaderText = "Nazwisko";
-            dgvDiary.Columns[3].HeaderText = "Klasa";
-            dgvDiary.Columns[4].HeaderText = "Uwagi";
-            dgvDiary.Columns[5].HeaderText = "Matematyka";
-            dgvDiary.Columns[6].HeaderText = "Fizyka";
-            dgvDiary.Columns[7].HeaderText = "Technologia";
-            dgvDiary.Columns[8].HeaderText = "J. polski";
-            dgvDiary.Columns[9].HeaderText = "J. obcy";
-            
 
+            dgvDiary.Columns["id"].HeaderText = "Numer";
+            dgvDiary.Columns["FirstName"].HeaderText = "Imię";
+            dgvDiary.Columns["LastName"].HeaderText = "Nazwisko";
+            dgvDiary.Columns["studentGroupName"].HeaderText = "Klasa";
+            dgvDiary.Columns["Comments"].HeaderText = "Uwagi";
+            dgvDiary.Columns["Math"].HeaderText = "Matematyka";
+            dgvDiary.Columns["Physics"].HeaderText = "Fizyka";
+            dgvDiary.Columns["Technology"].HeaderText = "Technologia";
+            dgvDiary.Columns["PolishLang"].HeaderText = "J. polski";
+            dgvDiary.Columns["ForeginLang"].HeaderText = "J. obcy";
+
+        }
+        public void SetColumnsOrder()
+        {
+            dgvDiary.Columns["id"].DisplayIndex = 0;
+            dgvDiary.Columns["FirstName"].DisplayIndex = 2;
+            dgvDiary.Columns["LastName"].DisplayIndex = 3;
+            dgvDiary.Columns["studentGroupName"].DisplayIndex = 1;
+            dgvDiary.Columns["Comments"].DisplayIndex = 4;
+            dgvDiary.Columns["Math"].DisplayIndex = 5;
+            dgvDiary.Columns["Physics"].DisplayIndex = 6;
+            dgvDiary.Columns["Technology"].DisplayIndex = 7;
+            dgvDiary.Columns["PolishLang"].DisplayIndex = 8;
+            dgvDiary.Columns["ForeginLang"].DisplayIndex = 9;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -65,12 +78,12 @@ namespace StudentDiary
 
         private void AddEditStudent_FormClosing(object sender, FormClosingEventArgs e)
         {
-           RefreshDiary();
+            RefreshDiary();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if(dgvDiary.SelectedRows.Count == 0)
+            if (dgvDiary.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Musisz zanaczyć ktrego studenta chcesz edytować");
                 return;
@@ -90,7 +103,7 @@ namespace StudentDiary
                 return;
             }
             var selectedStudent = dgvDiary.SelectedRows[0];
-            
+
             var confirmDelete = MessageBox.Show($"Czy na pewno chcesz usunąć studenta " +
                 ($"{selectedStudent.Cells[1].Value.ToString()}" +
                 $"{selectedStudent.Cells[2].Value.ToString()}").Trim(),
@@ -107,7 +120,7 @@ namespace StudentDiary
         private void DeleteStudent(int id)
         {
             var students = _fileHelper.DeserializeFromFile();
-            students.RemoveAll(x =>x.Id == id );
+            students.RemoveAll(x => x.Id == id);
             _fileHelper.SerializeToFile(students);
         }
 
@@ -116,6 +129,6 @@ namespace StudentDiary
             RefreshDiary();
         }
 
-        
+
     }
 }
