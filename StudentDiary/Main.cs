@@ -21,15 +21,21 @@ namespace StudentDiary
         {
 
             InitializeComponent();
-            setStudentsGroupsList();
+            SetStudentsGroupsList();
             RefreshDiary();
             SetColumnsHeader();
             SetColumnsOrder();
-            dgvDiary.Columns["OptionalClasses"].ReadOnly = true;
-
+            SetColumnsReadOnly();
+           
+        }
+        public void SetColumnsReadOnly() 
+        { 
+            
+            foreach(DataGridViewColumn column in dgvDiary.Columns)
+                column.ReadOnly = true;
 
         }
-        public void setStudentsGroupsList()
+        public void SetStudentsGroupsList()
         {
             cbxIdOfStudentClass.Items.Add("Wszyscy");
             cbxIdOfStudentClass.Items.AddRange(School.studentsSections.ToArray());
