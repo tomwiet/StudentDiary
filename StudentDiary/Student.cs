@@ -11,7 +11,7 @@ namespace StudentDiary
         public int Id {  get; set; }    
         public string FirstName {  get; set; } 
         public string LastName { get; set; }
-        public string StudentSection { get; set; }
+        public int StudentGroup { get; set; }
         public string Comments { get; set; }
         public string Math {  get; set; }
         public string Physics {  get; set; }

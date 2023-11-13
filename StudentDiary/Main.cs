@@ -17,9 +17,11 @@ namespace StudentDiary
 
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
+        private List<Group> _groups;
+
         public Main()
         {
-
+           
             InitializeComponent();
             SetStudentsGroupsList();
             RefreshDiary();
@@ -37,20 +39,22 @@ namespace StudentDiary
         }
         public void SetStudentsGroupsList()
         {
-            cbxIdOfStudentClass.Items.Add("Wszyscy");
-            cbxIdOfStudentClass.Items.AddRange(School.studentsSections.ToArray());
-            cbxIdOfStudentClass.SelectedIndex = 0;
+            _groups = GroupHelper.GetGroupList("Wszyscy");
+            cbxStudentGroup.DataSource = _groups;
+            cbxStudentGroup.DisplayMember = "Name";
+            cbxStudentGroup.ValueMember = "Id";
         }
         public void RefreshDiary()
         {
 
             var students = _fileHelper.DeserializeFromFile().OrderBy(x => x.Id).ToList();
-
-
-            if (!cbxIdOfStudentClass.SelectedItem.Equals("Wszyscy"))
+            var selectedGroup = (cbxStudentGroup.SelectedItem as Group).Id;
+            
+            if (selectedGroup != 0)
             {
-                students.RemoveAll(
-                    x => x.StudentSection != cbxIdOfStudentClass.SelectedItem.ToString());
+                students = 
+                    students.Where(x=>x.StudentGroup == selectedGroup)
+                            .OrderBy(x => x.Id).ToList();
             }
 
             dgvDiary.DataSource = students;
@@ -63,7 +67,7 @@ namespace StudentDiary
             dgvDiary.Columns[nameof(Student.Id)].HeaderText = "Numer";
             dgvDiary.Columns[nameof(Student.FirstName)].HeaderText = "Imię";
             dgvDiary.Columns[nameof(Student.LastName)].HeaderText = "Nazwisko";
-            dgvDiary.Columns[nameof(Student.StudentSection)].HeaderText = "Wydział";
+            dgvDiary.Columns[nameof(Student.StudentGroup)].HeaderText = "Wydział";
             dgvDiary.Columns[nameof(Student.Comments)].HeaderText = "Uwagi";
             dgvDiary.Columns[nameof(Student.Math)].HeaderText = "Matematyka";
             dgvDiary.Columns[nameof(Student.Physics)].HeaderText = "Fizyka";
@@ -78,7 +82,7 @@ namespace StudentDiary
             dgvDiary.Columns[nameof(Student.Id)].DisplayIndex = 0;
             dgvDiary.Columns[nameof(Student.FirstName)].DisplayIndex = 1;
             dgvDiary.Columns[nameof(Student.LastName)].DisplayIndex = 2;
-            dgvDiary.Columns[nameof(Student.StudentSection)].DisplayIndex = 3;
+            dgvDiary.Columns[nameof(Student.StudentGroup)].DisplayIndex = 3;
             dgvDiary.Columns[nameof(Student.Comments)].DisplayIndex = 4;
             dgvDiary.Columns[nameof(Student.Math)].DisplayIndex = 5;
             dgvDiary.Columns[nameof(Student.Physics)].DisplayIndex = 6;
@@ -149,7 +153,7 @@ namespace StudentDiary
             RefreshDiary();
         }
 
-        private void cbxIdOfStudentGroup_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbxStudentGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshDiary();
         }

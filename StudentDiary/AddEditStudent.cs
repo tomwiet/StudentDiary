@@ -16,20 +16,30 @@ namespace StudentDiary
     public partial class AddEditStudent : Form
     {
         private int _studentId;
-
         private Student _student;
+        private List<Group> _groups;
+
 
         private FileHelper<List<Student>> _fileHelper =
             new FileHelper<List<Student>>(Program.FilePath);
         public AddEditStudent(int id = 0)
         {
+            _groups = GroupHelper.GetGroupList("Brak");
+
             InitializeComponent();
 
             _studentId = id;
-            cbxStudentGroup.Items.AddRange(School.studentsSections.ToArray());
+            SetStudentsGroupsList();
             GetStudentData();
             tbFirstName.Select();
 
+        }
+        public void SetStudentsGroupsList()
+        {
+            _groups = GroupHelper.GetGroupList("Brak");
+            cbxStudentGroup.DataSource = _groups;
+            cbxStudentGroup.DisplayMember = "Name";
+            cbxStudentGroup.ValueMember = "Id";
         }
         private void GetStudentData()
         {
@@ -42,15 +52,13 @@ namespace StudentDiary
                 if (_student == null)
                     throw new Exception("Brak użytkownika o podanym Id");
 
-                FillEditingControls(_student.StudentSection);
-
-
+                FillEditingControls();
 
             }
 
         }
 
-        private void FillEditingControls(string studentGroupName)
+        private void FillEditingControls()
         {
             tbId.Text = _student.Id.ToString();
             tbFirstName.Text = _student.FirstName;
@@ -61,15 +69,10 @@ namespace StudentDiary
             tbPolishLang.Text = _student.PolishLang;
             tbForeginLang.Text = _student.ForeginLang;
             rtbComments.Text = _student.Comments;
-            cbxStudentGroup.SelectedIndex =
-                School.studentsSections.IndexOf(studentGroupName);
+            cbxStudentGroup.SelectedItem = 
+                _groups.FirstOrDefault(x=>x.Id == _student.StudentGroup);
+                
             cbOptionalClasses.Checked = _student.OptionalClasses;
-
-
-
-
-
-
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
@@ -104,7 +107,7 @@ namespace StudentDiary
                 Id = _studentId,
                 FirstName = tbFirstName.Text,
                 LastName = tbLastName.Text,
-                StudentSection = cbxStudentGroup.SelectedItem.ToString(),
+                StudentGroup = (cbxStudentGroup.SelectedItem as Group).Id,
                 Comments = rtbComments.Text,
                 Math = tbMath.Text,
                 Physics = tbPhysics.Text,
