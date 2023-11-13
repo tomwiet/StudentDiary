@@ -60,32 +60,32 @@ namespace StudentDiary
         public void SetColumnsHeader()
         {
 
-            dgvDiary.Columns["id"].HeaderText = "Numer";
-            dgvDiary.Columns["FirstName"].HeaderText = "Imię";
-            dgvDiary.Columns["LastName"].HeaderText = "Nazwisko";
-            dgvDiary.Columns["StudentSection"].HeaderText = "Wydział";
-            dgvDiary.Columns["Comments"].HeaderText = "Uwagi";
-            dgvDiary.Columns["Math"].HeaderText = "Matematyka";
-            dgvDiary.Columns["Physics"].HeaderText = "Fizyka";
-            dgvDiary.Columns["Technology"].HeaderText = "Technologia";
-            dgvDiary.Columns["PolishLang"].HeaderText = "J. polski";
-            dgvDiary.Columns["ForeginLang"].HeaderText = "J. obcy";
-            dgvDiary.Columns["OptionalClasses"].HeaderText = "Zaj dod.";
+            dgvDiary.Columns[nameof(Student.Id)].HeaderText = "Numer";
+            dgvDiary.Columns[nameof(Student.FirstName)].HeaderText = "Imię";
+            dgvDiary.Columns[nameof(Student.LastName)].HeaderText = "Nazwisko";
+            dgvDiary.Columns[nameof(Student.StudentSection)].HeaderText = "Wydział";
+            dgvDiary.Columns[nameof(Student.Comments)].HeaderText = "Uwagi";
+            dgvDiary.Columns[nameof(Student.Math)].HeaderText = "Matematyka";
+            dgvDiary.Columns[nameof(Student.Physics)].HeaderText = "Fizyka";
+            dgvDiary.Columns[nameof(Student.Technology)].HeaderText = "Technologia";
+            dgvDiary.Columns[nameof(Student.PolishLang)].HeaderText = "J. polski";
+            dgvDiary.Columns[nameof(Student.ForeginLang)].HeaderText = "J. obcy";
+            dgvDiary.Columns[nameof(Student.OptionalClasses)].HeaderText = "Zaj dod.";
 
         }
         public void SetColumnsOrder()
         {
-            dgvDiary.Columns["id"].DisplayIndex = 0;
-            dgvDiary.Columns["FirstName"].DisplayIndex = 1;
-            dgvDiary.Columns["LastName"].DisplayIndex = 2;
-            dgvDiary.Columns["StudentSection"].DisplayIndex = 3;
-            dgvDiary.Columns["Comments"].DisplayIndex = 4;
-            dgvDiary.Columns["Math"].DisplayIndex = 5;
-            dgvDiary.Columns["Physics"].DisplayIndex = 6;
-            dgvDiary.Columns["Technology"].DisplayIndex = 7;
-            dgvDiary.Columns["PolishLang"].DisplayIndex = 8;
-            dgvDiary.Columns["ForeginLang"].DisplayIndex = 9;
-            dgvDiary.Columns["OptionalClasses"].DisplayIndex = 10;
+            dgvDiary.Columns[nameof(Student.Id)].DisplayIndex = 0;
+            dgvDiary.Columns[nameof(Student.FirstName)].DisplayIndex = 1;
+            dgvDiary.Columns[nameof(Student.LastName)].DisplayIndex = 2;
+            dgvDiary.Columns[nameof(Student.StudentSection)].DisplayIndex = 3;
+            dgvDiary.Columns[nameof(Student.Comments)].DisplayIndex = 4;
+            dgvDiary.Columns[nameof(Student.Math)].DisplayIndex = 5;
+            dgvDiary.Columns[nameof(Student.Physics)].DisplayIndex = 6;
+            dgvDiary.Columns[nameof(Student.Technology)].DisplayIndex = 7;
+            dgvDiary.Columns[nameof(Student.PolishLang)].DisplayIndex = 8;
+            dgvDiary.Columns[nameof(Student.ForeginLang)].DisplayIndex = 9;
+            dgvDiary.Columns[nameof(Student.OptionalClasses)].DisplayIndex = 10;
 
         }
 
